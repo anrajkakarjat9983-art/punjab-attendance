@@ -1,0 +1,19 @@
+{
+  "name": "punjab-attendance-payroll-root",
+  "version": "1.0.0",
+  "description": "Punjab Attendance & Payroll - 100% Free Mobile Workforce & Payroll Management",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build && npm --prefix backend install && npm --prefix backend run prisma:generate && npm --prefix backend run build",
+    "start": "npm --prefix backend start",
+    "start:dev": "npm run start:backend",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "db:push": "cd backend && npx prisma db push",
+    "db:seed": "cd backend && npx tsx prisma/seed.ts",
+    "android:sync": "cd frontend && npm run build && npx cap sync android",
+    "android:open": "cd frontend && npx cap open android",
+    "android:build": "cd frontend && npm run build && npx cap sync android && cd android && .\\gradlew.bat assembleDebug"
+  }
+}
