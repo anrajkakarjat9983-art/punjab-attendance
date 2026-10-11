@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Punjab Attendance & Payroll - 100% Free Mobile Workforce & Payroll Management",
   "scripts": {
-    "build": "npm --prefix frontend install && npm --prefix frontend run build && npm --prefix backend install && npm --prefix backend run prisma:generate && npm --prefix backend run build",
+    "build": "npm --prefix frontend install --include=dev && npm --prefix frontend run build && npm --prefix backend install --include=dev && npm --prefix backend run prisma:generate && npm --prefix backend run build",
     "start": "npm --prefix backend start",
     "start:dev": "npm run start:backend",
     "start:backend": "cd backend && npm run dev",
