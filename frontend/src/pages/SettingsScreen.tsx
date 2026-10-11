@@ -499,7 +499,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
       <StaffListModal
         isOpen={showStaffListModal}
         onClose={() => setShowStaffListModal(false)}
-        onSelectEmployee={(emp) => {
+        onSelectEmployee={(emp: Employee) => {
           setSelectedStaff(emp);
           setShowStaffProfileModal(true);
         }}

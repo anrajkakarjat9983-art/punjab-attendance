@@ -47,7 +47,7 @@ export const authenticateToken = async (
       }
 
       req.businessId = membership.businessId;
-      req.user.role = membership.role;
+      if (req.user) req.user.role = membership.role;
     } else {
       // Find user's primary/first business
       const membership = await prisma.businessMember.findFirst({
@@ -55,7 +55,7 @@ export const authenticateToken = async (
       });
       if (membership) {
         req.businessId = membership.businessId;
-        req.user.role = membership.role;
+        if (req.user) req.user.role = membership.role;
       }
     }
 

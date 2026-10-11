@@ -2,14 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import fs from 'fs';
 import apiRouter from './routes/api.js';
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -39,7 +35,10 @@ app.get('/api/health', (req, res) => {
 app.use('/api', apiRouter);
 
 // Serve frontend build in production (e.g. Render unified deployment)
-const frontendDistPath = path.resolve(__dirname, '../../frontend/dist');
+const frontendDistPath = fs.existsSync(path.resolve(process.cwd(), '../frontend/dist'))
+  ? path.resolve(process.cwd(), '../frontend/dist')
+  : path.resolve(process.cwd(), 'frontend/dist');
+
 if (fs.existsSync(frontendDistPath)) {
   app.use(express.static(frontendDistPath));
   app.get('*', (req, res, next) => {
